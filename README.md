@@ -65,12 +65,25 @@ uvicorn app.main:app --host 127.0.0.1 --port 8000
 
 **Compare**: User asks "compare OPQ vs GSA" → Returns grounded comparison
 
+## Evaluation
+
+Run evaluation to measure system performance:
+
+```bash
+python -m app.evaluation
+```
+
+Evaluation metrics:
+- **Retrieval Quality** - Precision of keyword search results
+- **Recommendation Relevance** - % of recommendations matching user query keywords
+- **Groundedness** - % of recommendations existing in catalog (no hallucinations)
+- **Response Accuracy** - % of responses following correct behavior (clarify/recommend/compare/refuse)
+
 ## Tech Stack
 
 - FastAPI
 - Pydantic
-- FAISS (optional semantic search)
-- sentence-transformers (optional)
+- Keyword search (primary)
 - SHL Product Catalog (377 assessments)
 
 ## License

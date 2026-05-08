@@ -126,6 +126,20 @@ Priority order for missing context:
 
 ## Evaluation
 
+### Evaluation Metrics
+
+| Metric | Description | Measurement |
+|--------|-------------|-------------|
+| **Retrieval Quality** | Precision of keyword search results | % of results containing query keywords |
+| **Recommendation Relevance** | How well recommendations match user needs | % of recommendations containing user query keywords |
+| **Groundedness** | Recommendations exist in catalog | % of recommendations validated against catalog |
+| **Response Accuracy** | Correct behavior per query type | % of responses following expected behavior |
+
+Run evaluation:
+```bash
+python -m app.evaluation
+```
+
 ### Schema Compliance
 - Response always includes `reply`, `recommendations`, `end_of_conversation`
 - `recommendations` is empty list when clarifying, 1-10 items otherwise
