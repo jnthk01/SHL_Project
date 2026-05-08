@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python -c ' *)",
+      "Bash(curl -s \"https://tcp-us-prod-rnd.shl.com/voiceRater/shl-ai-hiring/shl_product_catalog.json\" -o catalog.json)",
+      "Bash(python fix_catalog.py)",
+      "Bash(timeout 10 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000)",
+      "Bash(timeout 8 python -m uvicorn app.main:app --host 127.0.0.1 --port 8000)",
+      "Bash(git init *)",
+      "Bash(gh auth *)",
+      "Bash(git add *)"
+    ]
+  }
+}
