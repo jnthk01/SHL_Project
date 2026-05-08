@@ -143,6 +143,10 @@ def compute_query_embedding(query: str) -> np.ndarray:
 
 
 def compute_catalog_embeddings(catalog: List[dict]) -> np.ndarray:
-    """Compute embeddings for entire catalog."""
-    model = get_embedding_model()
-    return model.encode_batch(catalog)
+    """Compute embeddings for entire catalog (optional - skip if not available)."""
+    try:
+        model = get_embedding_model()
+        return model.encode_batch(catalog)
+    except Exception as e:
+        logger.warning(f"Could not compute embeddings: {e}")
+        return np.array([])

@@ -11,12 +11,8 @@ from pathlib import Path
 
 logger = logging.getLogger(__name__)
 
-# Try to import FAISS
-try:
-    import faiss
-    FAISS_AVAILABLE = True
-except ImportError:
-    FAISS_AVAILABLE = False
+# Don't import FAISS at startup - lazy load when needed
+FAISS_AVAILABLE = False
 
 
 class VectorStore:

@@ -47,12 +47,13 @@ async def lifespan(app: FastAPI):
     _catalog_manager = CatalogManager()
     logger.info(f"Loaded {len(catalog)} assessments from catalog")
 
-    # Initialize vector store (semantic search)
+    # Initialize vector store (semantic search) - skip for faster startup
+    # The app works fine with just keyword search
     try:
-        initialize_vector_store(catalog)
+        initialize_vector_store(catalog, force_rebuild=False)
         logger.info("Vector store initialized")
     except Exception as e:
-        # Optional feature - silently skip
+        logger.info("Vector store skipped (optional feature)")
         pass
 
     # Create agent
